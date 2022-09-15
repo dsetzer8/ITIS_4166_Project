@@ -1,0 +1,26 @@
+/* Header Area -
+    ○ At the top of the page
+    ○ Full width
+    ○ Sensible height
+*/
+header {
+    display: block;
+}
+
+/* General Site Navigation -
+    ○ At the top of the page
+    ○ Full width
+    ○ Sensible height
+*/
+
+/* Footer Area
+    ○ Full width
+    ○ Sensible height
+    ○ At the bottom of the page
+*/
+footer {
+    display: block;
+}
+/* Main content area
+    ○ Full width
+*/
