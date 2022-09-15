@@ -26,12 +26,6 @@
     background-color: white;
     color: #0B0B45;
 }
-.header a:after {
-    content: " | ";
-}
-.header a:before {
-    content: " | ";
-}
 .header-right {
     float: right;
 }
@@ -40,8 +34,37 @@
     ○ Full width
     ○ Sensible height
 */
-.body title{
+.title {
+    overflow: hidden;
+    background-color: white;
+    padding: 10px 10px;
+}
+.title a{
+    float: left;
     color: #0B0B45;
+    text-align: left;
+    padding: 2px;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 20px;
+    border-radius: 2px;
+    font-size: 25px;
+    font-weight: bold;
+}
+hr {
+    height:3px;
+    background-color: #0B0B45;
+}
+.body h1{
+    padding-top:5%;
+    padding-left:5%;
+    position:relative;
+    text-align: left;
+    top:50%;
+}
+.body p{
+    text-align: left;
+    padding-left:5%;
 }
 /* Footer Area
     ○ Full width
