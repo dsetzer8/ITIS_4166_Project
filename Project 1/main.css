@@ -7,11 +7,6 @@
     overflow: hidden;
     background-color: #0B0B45;
     padding: 10px 10px;
-    width: 98.97%;
-    height: 6%;
-    position:absolute;
-    top:0;
-    left:0;
 }
 .header a {
     float: left;
@@ -45,7 +40,9 @@
     ○ Full width
     ○ Sensible height
 */
-
+.body title{
+    color: #0B0B45;
+}
 /* Footer Area
     ○ Full width
     ○ Sensible height
