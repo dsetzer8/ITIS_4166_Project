@@ -3,10 +3,22 @@
     ○ Full width
     ○ Sensible height
 */
-header {
-    display: block;
+.header {
+    overflow: hidden;
+    background-color: #0B0B45;
+    padding: 20px 10px;
 }
 
+.header a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
 /* General Site Navigation -
     ○ At the top of the page
     ○ Full width
@@ -23,4 +35,9 @@ footer {
 }
 /* Main content area
     ○ Full width
+*/
+
+/* Color Palette:
+    Navy - #000080
+    White - #FFFFFF
 */
