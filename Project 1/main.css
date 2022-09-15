@@ -6,18 +6,34 @@
 .header {
     overflow: hidden;
     background-color: #0B0B45;
-    padding: 20px 10px;
+    padding: 10px 10px;
 }
-
 .header a {
     float: left;
     color: white;
     text-align: center;
-    padding: 12px;
+    padding: 15px;
     text-decoration: none;
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
+}
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+.header a:hover {
+    background-color: white;
+    color: #0B0B45;
+}
+.header a:after {
+    content: " | ";
+}
+.header a:before {
+    content: " | ";
+}
+.header-right {
+    float: right;
 }
 /* General Site Navigation -
     ○ At the top of the page
