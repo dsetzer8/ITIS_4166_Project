@@ -66,6 +66,18 @@ hr {
     text-align: left;
     padding-left:5%;
 }
+.list{
+    color: #0B0B45;
+}
+.list h3 {
+    font-size: 25px;
+}
+.list ul{
+    list-style-type: none;
+}
+.list li{
+font-size: 20px;
+}
 /* Footer Area
     ○ Full width
     ○ Sensible height
