@@ -37,14 +37,14 @@
 */
 .title {
     overflow: hidden;
-    background-color: white;
+    background-color:white;
     padding: 10px 10px;
 }
 .title a{
     float: left;
     color: #0B0B45;
     text-align: left;
-    padding: 2px;
+    padding-left:10px;
     text-decoration: none;
     font-size: 20px;
     line-height: 20px;
@@ -105,9 +105,22 @@ padding:7.5px;
     height: 100px;
     width: 200px; 
 }
+.details button{
+    float: right;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #0B0B45;
+    border-radius: 4px;
+}
 .details ul{
     float:right;
-    padding-right:60%;
+    padding-right:55%;
     color: #0B0B45;
     font-size: 20px;
     list-style-type: none;
