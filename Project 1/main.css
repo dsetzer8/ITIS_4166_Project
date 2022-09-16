@@ -70,13 +70,17 @@ hr {
     color: #0B0B45;
 }
 .list h3 {
+    padding-top: 2.5%;
     font-size: 25px;
+    padding-left:5%;
 }
 .list ul{
     list-style-type: none;
+    padding-left:6%;
 }
 .list li{
 font-size: 20px;
+padding:7.5px;
 }
 /* Footer Area
     ○ Full width
