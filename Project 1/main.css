@@ -18,9 +18,10 @@
     line-height: 20px;
     border-radius: 2px;
 }
-.header a.logo {
-    font-size: 30px;
-    font-weight: bold;
+.header img{
+    height: 50px;
+    width:100px;
+
 }
 .header a:hover {
     background-color: white;
@@ -93,7 +94,36 @@ hr {
 .list li{
 font-size: 20px;
 padding:7.5px;
-
+}
+.details h1{
+    color: #0B0B45;
+    padding-left: 2%;
+}
+.details img{
+    padding-left: 5%;
+    padding-top: 2%;
+    height: 100px;
+    width: 200px; 
+}
+.details ul{
+    float:right;
+    padding-right:60%;
+    color: #0B0B45;
+    font-size: 20px;
+    list-style-type: none;
+}
+.details li{
+    padding:10px;
+}
+.description h1{
+    padding-left: 2%;
+    color: #0B0B45;
+    padding-top: 2%;
+}
+.description p{
+    padding-left:2%;
+    color: #0B0B45;
+    font-size: 20px;
 }
 /* Footer Area
     ○ Full width
