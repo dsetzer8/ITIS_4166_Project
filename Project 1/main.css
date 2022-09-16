@@ -67,7 +67,19 @@ hr {
     padding-left:5%;
 }
 .list{
+    overflow: hidden;
+    background-color: white;
+    padding: 10px 10px;
     color: #0B0B45;
+}
+.list a{
+    color: #0B0B45;
+    text-align: left;
+    padding: 2px;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 20px;
+    border-radius: 2px;
 }
 .list h3 {
     padding-top: 2.5%;
@@ -81,6 +93,7 @@ hr {
 .list li{
 font-size: 20px;
 padding:7.5px;
+
 }
 /* Footer Area
     ○ Full width
