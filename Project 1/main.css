@@ -141,6 +141,29 @@ padding:7.5px;
     color: #0B0B45;
     font-size: 20px;
 }
+.form label{
+    font-size: 25px;
+    width:200px;
+    display:inline-block;
+    color: #0B0B45;
+    padding-left: 40%;
+    padding-top: 2%;
+}
+.formbutton button{
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #0B0B45;
+    border-radius: 4px;
+    
+
+
+}
 /* Footer Area
     ○ Full width
     ○ Sensible height
