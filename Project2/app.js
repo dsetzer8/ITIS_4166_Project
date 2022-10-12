@@ -18,6 +18,9 @@ app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
 
 //Routes Setup
+app.get('/', (req,res)=>{
+    res.render('index');
+});
 
 //Start Server
 app.listen(port, host, ()=>{
