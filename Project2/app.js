@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 var _ = require('lodash');
-const connectionRoutes = require('./routes/connectionRoutes');
+const mainRoutes = require('./routes/mainRoutes');
 
 //Create App
 const app = express();
@@ -25,7 +25,7 @@ app.get('/', (req,res)=>{
 });
 
 //Connection Route
-app.use('/connections', connectionRoutes);
+app.use('/connections', mainRoutes);
 
 //Error Handlers
 app.use((req, res, next)=> {
