@@ -21,53 +21,60 @@ exports.create = (req,res)=>{
     res.redirect('/connections');
 };
 //Show connection details
-exports.show = (req,res)=>{
+exports.show = (req,res, next)=>{
     let id = req.params.id;
     let connection = model.findById(id);
     if(connection) {
         res.render('./story/connectionDetails', {connection});
+    }else{
+        let err = new Error('Cannot Find Connection With Id: ' + id);
+        err.status = 404;
+        next(err);
     }
-        res.status(404).send('Cannot Find A Connection With The ID: ' + id);
 };
 //Edit a connections details
-exports.edit = (req,res)=>{
+exports.edit = (req,res, next)=>{
     let id = req.params.id;
     let connection = model.findById(id);
     if(connection){
         res.render('./story/edit', {connection});
     } else {
-        let err = Error('Cannot find connection with id ' + id);
+        let err = Error('Cannot Find Connection With Id: ' + id);
         err.status = 404;
         next(err);
     }
 };
 //Update an exisiting connection
-exports.update = (req,res)=>{
+exports.update = (req,res, next)=>{
     let connection = req.body;
     let id = req.params.id;
 
     if(model.updateById(id, connection)) {
         res.redirect('/connections/'+id);
     }else{
-        res.status(404).send('Cannot Find Story With Id: ' + id);
+        let err = Error('Cannot Find Connection With Id: ' + id);
+        err.status = 404;
+        next(err);
     }
 };
 //Delete an existing connection
-exports.delete = (req,res)=>{
+exports.delete = (req,res, next)=>{
     let connection = req.body;
     let id = req.params.id;
 
     if(model.deleteById(id, connection)) {
         res.redirect('/connections');
     }else{
-        res.status(404).send('Cannot Find Story With Id: ' + id);
+        let err = Error('Cannot Find Connection With Id: ' + id);
+        err.status = 404;
+        next(err);
     }
 };
 //Render the about page - FIX ME
 exports.about = (req,res)=>{
-    res.render('./story/about');
+    res.render('about');
 };
 //Render the contact page - FIX ME
 exports.contact = (req,res)=>{
-    res.render('./story/contact');
+    res.render('contact');
 };

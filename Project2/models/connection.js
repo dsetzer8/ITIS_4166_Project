@@ -3,7 +3,6 @@ const { DateTime } = require("luxon");
 const {v4: uuidv4} = require('uuid');
 var _ = require('lodash');
 
-
 const connections = [
 {
     id: '1',
@@ -13,7 +12,7 @@ const connections = [
     author: 'Dalton Setzer',
     createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT),
     location:'UNCC Charlotte Student Union',
-    image:''
+    image:'valoranttournament.png'
 },
 {
     id: '2',
@@ -101,6 +100,10 @@ exports.deleteById = function(id) {
         return false;
     }
 }
-//FIX ME
-let groupByCategory =_.groupBy(connections, "category");
-console.log(groupByCategory);
+Array.prototype.groupBy = function(key) {return this
+    .reduce((hash, obj) => {
+    if(obj[key] === undefined) return hash;
+    return Object.assign(hash, { [obj[key]]:( hash[obj[key]] || [] ).concat(obj)})
+    }, {})
+    };
+    console.log(connections.groupBy('category'));
