@@ -101,7 +101,6 @@ exports.deleteById = function(id) {
         return false;
     }
 }
-
+//FIX ME
 let groupByCategory =_.groupBy(connections, "category");
-
 console.log(groupByCategory);

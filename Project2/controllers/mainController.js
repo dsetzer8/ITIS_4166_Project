@@ -63,11 +63,11 @@ exports.delete = (req,res)=>{
         res.status(404).send('Cannot Find Story With Id: ' + id);
     }
 };
-//Redirect to the about page - FIX ME
+//Render the about page - FIX ME
 exports.about = (req,res)=>{
-    res.redirect('./story/about');
+    res.render('./story/about');
 };
-//Redirect to the contact page - FIX ME
+//Render the contact page - FIX ME
 exports.contact = (req,res)=>{
-    res.redirect('./story/contact');
+    res.render('./story/contact');
 };

@@ -3,7 +3,7 @@ const controller = require('../controllers/mainController');
 
 const router = express.Router();
 
-//GET / :Main Route or Home Page
+//GET /:Main Route or Home Page
 router.get('/',controller.home);
 
 //GET /connections: Send all connections to the user
@@ -27,10 +27,10 @@ router.put('/:id', controller.update);
 //DELETE /connections/:id: Delete the story identified by id
 router.delete('/:id', controller.delete);
 
-//GET /connections/about: Display about page
+//GET /about: Display about page
 router.get('/about',controller.about);
 
-//GET /connections/contact: Display contact page
+//GET /contact: Display contact page
 router.get('/contact',controller.contact);
 
 module.exports = router;
