@@ -4,7 +4,7 @@ const controller = require('../controllers/mainController');
 const router = express.Router();
 
 //GET / :Main Route or Home Page
-router.get('',controller.home);
+router.get('/',controller.home);
 
 //GET /connections: Send all connections to the user
 router.get('/connections', controller.index);
