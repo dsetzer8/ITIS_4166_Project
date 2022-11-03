@@ -20,9 +20,7 @@ app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
 
 //Main Route
-app.get('/', (req,res)=>{
-    res.render('index');
-});
+app.use('',mainRoutes);
 
 //Connection Route
 app.use('/connections', mainRoutes);

@@ -1,19 +1,26 @@
+//Required Modules
 const model = require('../models/connection');
+
+//Render the home page
+exports.home = (req,res)=>{
+    res.render('./index');
+}
+//Renders the connections page
 exports.index = (req,res)=>{
     let connections = model.find();
     res.render('./story/index', {connections});
 };
-
+//Renders a new connection
 exports.new = (req,res)=>{
     res.render('./story/newConnections');
 };
-
+//Create a connection and redirect to connections
 exports.create = (req,res)=>{
     let connection = req.body;
     model.save(connection);
     res.redirect('/connections');
 };
-
+//Show connection details
 exports.show = (req,res)=>{
     let id = req.params.id;
     let connection = model.findById(id);
@@ -22,7 +29,7 @@ exports.show = (req,res)=>{
     }
         res.status(404).send('Cannot Find A Connection With The ID: ' + id);
 };
-
+//Edit a connections details
 exports.edit = (req,res)=>{
     let id = req.params.id;
     let connection = model.findById(id);
@@ -34,7 +41,7 @@ exports.edit = (req,res)=>{
         next(err);
     }
 };
-
+//Update an exisiting connection
 exports.update = (req,res)=>{
     let connection = req.body;
     let id = req.params.id;
@@ -45,7 +52,7 @@ exports.update = (req,res)=>{
         res.status(404).send('Cannot Find Story With Id: ' + id);
     }
 };
-
+//Delete an existing connection
 exports.delete = (req,res)=>{
     let connection = req.body;
     let id = req.params.id;
@@ -56,11 +63,11 @@ exports.delete = (req,res)=>{
         res.status(404).send('Cannot Find Story With Id: ' + id);
     }
 };
-
+//Redirect to the about page - FIX ME
 exports.about = (req,res)=>{
-    res.redirect('/story/about');
+    res.redirect('./story/about');
 };
-
+//Redirect to the contact page - FIX ME
 exports.contact = (req,res)=>{
-    res.redirect('/story/contact');
+    res.redirect('./story/contact');
 };

@@ -3,8 +3,11 @@ const controller = require('../controllers/mainController');
 
 const router = express.Router();
 
+//GET / :Main Route or Home Page
+router.get('',controller.home);
+
 //GET /connections: Send all connections to the user
-router.get('/', controller.index);
+router.get('/connections', controller.index);
 
 //GET /connections/newConnection: Send html form for creating a new connection
 router.get('/newConnections', controller.new);
