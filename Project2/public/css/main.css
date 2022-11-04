@@ -201,3 +201,20 @@ padding:7.5px;
   Navy - #000080
   White - #FFFFFF
 */
+
+.content{
+  color: #000080;
+  text-decoration: none;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.content ul{
+  list-style-type: none;
+}
+.content table{
+  color: #000080;
+  font-size: 20px;
+  padding: 5px;
+  padding-left: 20px;
+}

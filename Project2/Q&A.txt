@@ -15,3 +15,34 @@ Array.prototype.groupBy = function(key) {return this
     }, {})
     };
     console.log(connections.groupBy('category'));
+
+//Required Modules
+
+const {ObjectId} = require('mongodb');
+var _ = require('lodash');
+
+//Need a reference variable to the connections collection in MongoDB
+let connections;
+exports.getCollection = db =>{
+    connections = db.collection('connection');
+}
+exports.find = () => connections.find().toArray();
+
+exports.findById = id => connections.findOne({_id: ObjectId(id)});//Must be Object id
+
+exports.save = connection => connections.insertOne(connection);
+
+exports.updateById = (id, newConnections) => connections.updateOne({_id: ObjectId(id)}, 
+                    {$set:{title:newConnections.title,
+                        category:newConnections.category,
+                        details:newConnections.details, 
+                        author:newConnections.author, 
+                        location:newConnections.location, 
+                        image:newConnections.image}});
+
+exports.deleteById = id => connections.deleteOne({_id: ObjectId(id)});
+4. Refactor the app for showing stories
+5. Refactor the app for showing story details
+6. Refactor the app for updating an existing story
+7. Refactor the app for deleting an existing story
+

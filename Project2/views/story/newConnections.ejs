@@ -8,26 +8,27 @@
         <table>
             <tr>
                 <td><label for="title">Title</label></td>
-                <td><input type="text" id="title" name="title" class = "fixed-width"></td>
+                <td><input type="text" id="title" name="title" class = "fixed-width" required></td>
             </tr>
             <tr>
                 <td><label for="author">Author</label></td>
-                <td><input type="text" id="author" name="author" class = "fixed-width"></td>
+                <td><input type="text" id="author" name="author" class = "fixed-width"required></td>
             </tr>
             <tr>
                 <td><label for="category">Category</label></td>
-                <td><input type="text" id="category" name="category" class = "fixed-width"></td>
+                <td><input type="text" id="category" name="category" class = "fixed-width"required></td>
             </tr>
             <tr>
                 <td class = "align-top"><label for="location">Location</label></td>
-                <td><input type="text" id="location" name="location" class = "fixed-width"></td>
+                <td><input type="text" id="location" name="location" class = "fixed-width"required></td>
             </tr>
             <tr>
                 <td class = "align-top"><label for="details">Details</label></td>
-                <td><textarea rows="5" id="details" name="details" class = "fixed-width"></textarea></td>
+                <td><textarea rows="5" id="details" name="details" class = "fixed-width"required minlength="10"></textarea></td>
             </tr>
             <tr>
-                <td><label for="image">Image URL</label></td>
+                <td class = "align-top"><label for="image">Image URL: </label></td>
+                <td><input type="file" id="image" name="image" class = "fixed-width"></td>
             </tr>
 
             <tr>

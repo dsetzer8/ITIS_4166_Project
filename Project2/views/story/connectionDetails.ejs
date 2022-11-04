@@ -8,13 +8,13 @@
         <h4><%= connection.category%></h4>
         <h2><%= connection.title%></h2>
         <img src=<%= connection.image%> width="300" height="200">
-        <h4><%= connection.details%></h4>
+        <div id = "connection"><%= connection.details%></div>
         <p>Location: <%= connection.location%></p>
         <small>Posted <%= connection.createdAt%> by <%= connection.author%></small>
 
         <form>
-            <button type = "submit" formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Edit</button>
-            <button type = "submit" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button>
+            <button type = "submit" formmethod="GET" formaction="/connections/<%=connection._id%>/edit">Edit</button>
+            <button type = "submit" formmethod="POST" formaction="/connections/<%=connection._id%>?_method=DELETE">Delete</button>
         </form>
     </div>
 <%- include('../partials/footer.ejs')%>

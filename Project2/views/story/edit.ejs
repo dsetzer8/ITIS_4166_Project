@@ -4,7 +4,7 @@
 </head>
 
 <div class = "content">
-    <form method = 'POST' action = "/connections/<%=connection.id%>?_method=PUT">
+    <form method = 'POST' action = "/connections/<%=connection._id%>?_method=PUT">
         <table>
             <tr>
                 <td><label for="title">Title</label></td>
@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td class = "align-top"><label for="details">Details</label></td>
-                <td><textarea rows="5" id="details" name="details" value = "<%= connection.details%>" class ="fixed-width" required></textarea></td>
+                <td><textarea cols="40" rows="6" id="details" name="details" class ="fixed-width" required minlength="10"><%= connection.details%></textarea></td>
             </tr>
             <tr>
                 <td class = "align-top"><label for="image">Image URL: </label></td>
