@@ -5,10 +5,11 @@ const model = require('../models/connection');
 exports.home = (req,res)=>{
     res.render('./index');
 }
-//Renders the connections page
-exports.index = (req,res)=>{
-    let connections = model.find();
-    res.render('./story/index', {connections});
+//Renders the connections pageS
+exports.index = (req,res,next)=>{
+    model.find()
+    .then(connections => res.render('./story/index', {connections}))
+    .catch(err => next(err));
 };
 //Renders a new connection
 exports.new = (req,res)=>{
@@ -22,15 +23,18 @@ exports.create = (req,res)=>{
 };
 //Show connection details
 exports.show = (req,res, next)=>{
-    let id = req.params.id;
-    let connection = model.findById(id);
-    if(connection) {
-        res.render('./story/connectionDetails', {connection});
-    }else{
-        let err = new Error('Cannot Find Connection With Id: ' + id);
-        err.status = 404;
-        next(err);
-    }
+    let id = req.params.id;//String type
+    model.findById(id)
+    .then(connection =>{
+        if(connection) {
+            res.render('./story/connectionDetails', {connection});
+        }else{
+            let err = new Error('Cannot Find Connection With Id: ' + id);
+            err.status = 404;
+            next(err);
+        }
+    })
+    .catch(err => next(err));
 };
 //Edit a connections details
 exports.edit = (req,res, next)=>{

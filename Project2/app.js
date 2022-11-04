@@ -3,15 +3,29 @@ const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 var _ = require('lodash');
+const {MongoClient} = require('mongodb'); 
 const mainRoutes = require('./routes/mainRoutes');
-
+const {getCollection} = require('./models/connection');
 //Create App
 const app = express();
 
 //Configure App
 let port = 8084;
 let host = 'localhost';
+let url = 'mongodb://localhost:27017';
 app.set('view engine', 'ejs');
+
+//Connect to MongoDB
+MongoClient.connect(url)
+.then(client =>{
+    const db = client.db('NBAD');
+    getCollection(db);
+    //Start Server
+    app.listen(port, host, ()=>{
+        console.log('Server is running on port ', port);
+    })
+})
+.catch(err => console.log(err.message));
 
 //Mount Middleware
 app.use(express.static('public'));
@@ -42,7 +56,3 @@ app.use((err, req, res, next)=>{
     res.render('error', {error: err});
 });
 
-//Start Server
-app.listen(port, host, ()=>{
-    console.log('Server is running on port ', port);
-})

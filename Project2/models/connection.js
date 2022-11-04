@@ -1,74 +1,17 @@
 //Required Modules
 const { DateTime } = require("luxon");
 const {v4: uuidv4} = require('uuid');
+const {ObjectId} = require('mongodb');
 var _ = require('lodash');
 
-const connections = [
-{
-    id: '1',
-    title: 'LAN Tournament - Valorant',
-    category: 'Tournament',
-    details: 'We will be hosting a LAN tournament for Valorant. The tournament will consist of bracket play or anyone looking to find new teammates.',
-    author: 'Dalton Setzer',
-    createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT),
-    location:'UNCC Charlotte Student Union',
-    image:'valoranttournament.png'
-},
-{
-    id: '2',
-    title: 'Escape From Tarkov',
-    category: 'Tournament',
-    details: 'We will be hosting a LAN tournament for Escape From Tarkov. The tournament will consist of bracket play or anyone looking to find new teammates.',
-    author: 'Dalton Setzer',
-    createdAt: DateTime.local(2022, 09, 30, 0).toLocaleString(DateTime.DATETIME_SHORT),
-    location:'UNCC',
-    image:''
-},
-{
-    id: '3',
-    title: 'Counter-Strike: Global Offensive',
-    category: 'Tournament',
-    details: 'We will be hosting a LAN tournament for Counter-Strike:Global Offensive. The tournament will consist of bracket play or anyone looking to find new teammates.',
-    author: 'Dalton Setzer',
-    createdAt: DateTime.local(2022, 09, 30, 0).toLocaleString(DateTime.DATETIME_SHORT),
-    location:'UNCC ',
-    image:''
-},
-{
-    id: '4',
-    title: 'Valorant',
-    category: 'Teams',
-    details: 'We will be hosting a LAN tournament for Escape From Tarkov. The tournament will consist of bracket play or anyone looking to find new teammates.',
-    author: 'Dalton Setzer',
-    createdAt: DateTime.local(2022, 09, 30, 0).toLocaleString(DateTime.DATETIME_SHORT),
-    location:'Remote',
-    image:''
-},
-{
-    id: '5',
-    title: 'Escape From Tarkov',
-    category: 'Teams',
-    details: 'We will be hosting a LAN tournament for Escape From Tarkov. The tournament will consist of bracket play or anyone looking to find new teammates.',
-    author: 'Dalton Setzer',
-    createdAt: DateTime.local(2022, 09, 30, 0).toLocaleString(DateTime.DATETIME_SHORT),
-    location:'Remote',
-    image:''
-},
-{
-    id: '6',
-    title: 'Escape From Tarkov',
-    category: 'Teams',
-    details: 'We will be hosting a LAN tournament for Escape From Tarkov. The tournament will consist of bracket play or anyone looking to find new teammates.',
-    author: 'Dalton Setzer',
-    createdAt: DateTime.local(2022, 09, 30, 0).toLocaleString(DateTime.DATETIME_SHORT),
-    location:'Remote',
-    image:''
+//Need a reference variable to the connections collection in MongoDB
+let connections;
+exports.getCollection = db =>{
+    connections = db.collection('connection');
 }
-];
+exports.find = () => connections.find().toArray();
 
-exports.find = () => connections;
-
-exports.findById = id => connections.find(connection=>connection.id === id);
+exports.findById = id => connections.findOne({_id: ObjectId(id)});//Must be Object id
 
 exports.save = function (connection) {
     connection.id = uuidv4();
@@ -100,10 +43,3 @@ exports.deleteById = function(id) {
         return false;
     }
 }
-Array.prototype.groupBy = function(key) {return this
-    .reduce((hash, obj) => {
-    if(obj[key] === undefined) return hash;
-    return Object.assign(hash, { [obj[key]]:( hash[obj[key]] || [] ).concat(obj)})
-    }, {})
-    };
-    console.log(connections.groupBy('category'));

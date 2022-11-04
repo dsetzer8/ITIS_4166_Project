@@ -2,3 +2,16 @@
 app.get('/', (req,res)=>{
     res.render('index');
 });
+
+let groupByCategory =_.groupBy(connections, "category");
+console.log(groupByCategory);
+
+<a href = "/connections/<%= connection.id%>"> <p><%= connection.category%> : <%= connection.title%></p></a>
+
+Array.prototype.groupBy = function(key) {return this
+    .reduce((hash, obj) => {
+    if(obj[key] === undefined) return hash;
+    return Object.assign(hash, { [obj[key]]:( hash[obj[key]] || [] ).concat(obj)})
+    }, {})
+    };
+    console.log(connections.groupBy('category'));
