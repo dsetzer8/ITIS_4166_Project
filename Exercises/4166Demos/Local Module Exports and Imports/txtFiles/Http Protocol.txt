@@ -1,0 +1,63 @@
+Http Protocol
+
+HTTP Overview
+
+o Web client and server
+communicates over the HTTP
+protocol
+o Client initiates the communication
+by sending an HTTP request
+message
+o Server responds with an HTTP
+response message
+
+HTTP Request
+
+Request Line:
+GET /index HTTP/1.1
+
+Header Fields: 
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+User-Agent: Mozilla/5.0 …
+Accept: text/html,…
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+Blank Line: 
+Body:
+
+HTTP Request Method
+
+oGET: requests a representation of the specified
+resource
+o POST: submits an entity to the specified resource
+o PUT: replaces all current representations of the target
+resource with the request payload
+o DELETE: deletes the specified resource
+
+HTTP Response
+
+Status Line:
+HTTP/1.1 200 OK
+Header Fields:
+Content-Type: text/html
+Date: Wed, 03 Feb 2021 20:40:22 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+Blank Line
+Body:
+<html> <head> <meta charset="utf-8">
+<title>Home</title> </head> <body> <p>Hello
+world!</p> </body> </html>
+
+HTTP Status Code:
+o 200 OK
+o 201 Created
+o 301 Moved Permanently
+o 400 Bad Request
+o 401 Unauthorized
+o 403 Forbidden
+o 404 Not Found
+o 500 Internal Server Error

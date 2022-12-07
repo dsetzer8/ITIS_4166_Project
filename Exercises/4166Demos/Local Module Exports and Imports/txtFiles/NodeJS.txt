@@ -1,0 +1,73 @@
+Modules
+
+JavaScript supports modularization by using modules
+o In NodeJS, each file is treated as a module, which
+can be used by other files
+o Each module is wrapped in a function
+o Therefore, local variables of a module have function
+scope, and is not accessible outside of the file
+o A module can export its variables to be used by
+another module
+◦ module.exports
+◦ exports
+
+Require modules
+
+In NodeJS, to use a module, call the require function
+◦ Core module: call require function with module name
+const fs = require(‘fs’);
+◦ Local module: call require function with relative path to the file
+const abc = require(‘./…’);
+◦ Third party module: first install the package using NPM, and
+then call require function with module name
+
+Synchronous Programming
+
+Statements are executed one by one
+o It is not efficient and can cause blocking when there
+are operations that take a long time to complete
+//Example
+const fs = require('fs');
+
+const.data = fs.readFileSync('./file.txt', 'utf-8');
+
+console.log(data);
+
+console.log('Hello, World!');
+
+Asynchronous Programming
+
+We can avoid blocking in the previous example by
+using asynchronous programming
+◦ allow the program continues running while waiting for the result
+of one operation
+o One way of asynchronous programming is to add a
+function as an argument to the slow operation
+o The function is called call back function, as it is called
+when the slow operation finishes
+
+Call back Function
+o Call back function is usually defined as an
+anonymous function with the following syntax
+(err, result) => {
+    if(err) {
+        //err handling code
+    } else {
+        //success handling code
+    }
+}
+//Example
+const fs = require('fs');
+fs.readFile('./file.txt', 'utf-8', (err, data) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(data);
+    }
+});
+console.log('Hello, world!');
+
+Event Loop
+
+o NodeJS uses asynchronous, non-blocking I/O model
+
