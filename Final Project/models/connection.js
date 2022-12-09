@@ -13,5 +13,5 @@ const connectionSchema = new Schema({
 {timestamps: true}
 );
 
-//collection name is Connections in the database
+// Collection name is Connections in the database
 module.exports = mongoose.model('Connection', connectionSchema);
