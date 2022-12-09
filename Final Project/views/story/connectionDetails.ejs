@@ -10,10 +10,12 @@
         <div id = "connection"><%= connection.details%></div>
         <img src=/images/<%= connection.image%> width="300" height="200">
         <p>Location: <%= connection.location%></p>
-        <small>Posted <%= connection.createdAt%> by <%= connection.author%></small>
+        <small>Posted <%= connection.createdAt%> by <%= connection.author.firstName + ' ' + connection.author.lastName%></small>
+        <%if(user == connection.author._id) {%>
         <form>
             <button type = "submit" formmethod="GET" formaction="/connections/<%=connection._id%>/edit">Edit</button>
             <button type = "submit" formmethod="POST" formaction="/connections/<%=connection._id%>?_method=DELETE">Delete</button>
         </form>
+        <%}%>
     </div>
 <%- include('../partials/footer.ejs')%>

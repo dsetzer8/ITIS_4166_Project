@@ -7,7 +7,6 @@ exports.index = (req, res, next)=>{
     .catch(err=>next(err));
 };
 
-
 exports.new = (req, res)=>{
     res.render('./story/new');
 };
@@ -27,7 +26,6 @@ exports.create = (req, res, next)=>{
 };
 
 exports.show = (req, res, next)=>{
-
     model.findById(id).populate('author', 'firstName lastName')
     .then(story=>{
         if(story) {       

@@ -13,7 +13,6 @@ const userSchema = new Schema({
 //Hash Passwords in Database - NBAD
 
 //Pre Middleware
-
 userSchema.pre('save',function(next){
     let user = this;
     if (!user.isModified('password'))

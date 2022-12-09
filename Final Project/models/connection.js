@@ -6,7 +6,7 @@ const connectionSchema = new Schema({
     category: {type: String, required: [true, 'Category is required']},
     details: {type: String, required: [true, 'Details are required'],
              minLength: [10, 'The details should have at least 10 characters.']},
-    author: {type: String, required: [true, 'Author is required']},
+    author: {type: Schema.Types.ObjectId, ref: 'User'},
     location: {type: String, required: [true, 'Location is required']},
     image: {Type: String}
 },

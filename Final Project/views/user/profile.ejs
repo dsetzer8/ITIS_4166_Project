@@ -2,7 +2,7 @@
 <div class = "content">
     <h2>Welcome, <%=user.firstName%></h2>
     <%if(connections.length){%>
-        <p>You have created the following stories</p>
+        <p>You have created the following connections</p>
         <%connections.forEach(connection =>{%>
             <a href = '/connections/<%= connection.id%>'><p><%=connection.title%></p></a>
         <%});

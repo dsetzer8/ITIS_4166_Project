@@ -11,7 +11,6 @@ router.get('/', controller.index);
 router.get('/new', isLoggedIn, controller.new);
 
 //POST /stories: create a new story
-
 router.post('/', isLoggedIn, controller.create);
 
 //GET /stories/:id: send details of story identified by id
