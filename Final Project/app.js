@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const {MongoClient} = require('mongodb');
 const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 const mainRoutes = require('./routes/mainRoutes');
 const {getCollection} = require('./models/connection');
 const User = require('./models/user');
@@ -36,6 +37,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(morgan('tiny'));
 app.use(methodOverride('_method')); 
 
+// Sessions and Cookies
 app.use(session({
     secret: '398th9gh39hgiuqh23hg92hb29',
     resave: false,
@@ -44,6 +46,7 @@ app.use(session({
     store: new MongoStore({mongoUrl:'mongodb://localhost:27017/NBAD'})
 }));
 
+// Session Counter
 app.use((req, res, next)=>{
     if(!req.session.counter)
         req.session.counter = 1;
@@ -51,6 +54,16 @@ app.use((req, res, next)=>{
         req.session.counter++;
 
     console.log(req.session);
+    next();
+});
+// Flash
+app.use(flash());
+// Flash: Error and Success
+app.use((req, res, next) => {
+    //console.log(req.session);
+    res.locals.user = req.session.user||null;
+    res.locals.errorMessages = req.flash('error');
+    res.locals.successMessages = req.flash('success');
     next();
 });
 
@@ -93,11 +106,22 @@ app.post('/', (req, res, next)=>{
     let user = new User(req.body);
     user.save()
     .then(()=> res.redirect('/login'))
-    .catch(err=>next(err));
+    .catch(err=>{
+    if(err.name === 'ValidationError') {
+        req.flash('error', err.message);
+        return res.redirect('/new');
+    }
+    if(err.code === 11000){
+        req.flash('error', 'Email Address Has Been Used');
+        return res.redirect('/new');
+    }
+        next(err);
+    });
 });
 
 //GET: Login Form
 app.get('/login', (req,res)=>{
+    console.log(req.flash());
     res.render('login');
 });
 
@@ -106,7 +130,6 @@ app.post('/login', (req, res, next)=>{
     //Authenticate The User's Login Request
     let email = req.body.email;
     let password = req.body.password;
-
     //Get The User that Matches the Email
     User.findOne({email: email})
     .then(user=>{
@@ -116,14 +139,17 @@ app.post('/login', (req, res, next)=>{
             .then(result=>{
                 if(result){
                     req.session.user = user._id; //Store User Id in the Session
+                    req.flash('success', 'You Have Successfully Logged In');
                     res.redirect('/profile');
                 }else{
                     console.log('Wrong Password');
+                    req.flash('error', 'Wrong Password!');
                     res.redirect('/login');
                 }
             })
         }else {
             console.log('Wrong Email Address');
+            req.flash('error', 'Wrong Email Address!');
             res.redirect('/login');
         }
     })
@@ -133,6 +159,7 @@ app.post('/login', (req, res, next)=>{
 //GET: Profile Page
 app.get('/profile', (req, res, next)=>{
     let id = req.session.user;
+    console.log(req.flash());
     User.findById(id)
     .then(user=>res.render('profile', {user}))
     .catch(err=>(err));
