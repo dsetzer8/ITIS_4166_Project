@@ -2,12 +2,13 @@
 <div class = "content">
     <h2>Welcome, <%=user.firstName%></h2>
     <%if(connections.length){%>
-        <p>You have created the following connections</p>
+        <h3>You have created the following connections:</h3>
         <%connections.forEach(connection =>{%>
             <a href = '/connections/<%= connection.id%>'><p><%=connection.title%></p></a>
         <%});
     } else {%>
         <p>You Have Not Created Any Connections</p>
     <%}%>
+    <h3>RSVPs:</h3>
 </div>
 <%- include('../partials/footer.ejs')%>

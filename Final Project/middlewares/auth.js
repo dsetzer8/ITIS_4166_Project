@@ -30,6 +30,10 @@ exports.isAuthor = (req,res,next)=>{
                 err.status = 401;
                 return next(err);
             }
+        } else {
+            let err = new Error('Cannot Find A Connection With Id ' + req.params.id);
+            err.status = 404;
+            return next(err);
         }
     })
     .catch(err=>next(err));

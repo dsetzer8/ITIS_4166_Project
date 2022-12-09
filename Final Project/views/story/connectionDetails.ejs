@@ -8,7 +8,7 @@
         <h4><%= connection.category%></h4>
         <h2><%= connection.title%></h2>
         <div id = "connection"><%= connection.details%></div>
-        <img src=/images/<%= connection.image%> width="300" height="200">
+        <img src= public/images/<%= connection.image%> width="300" height="200">
         <p>Location: <%= connection.location%></p>
         <small>Posted <%= connection.createdAt%> by <%= connection.author.firstName + ' ' + connection.author.lastName%></small>
         <%if(user == connection.author._id) {%>
@@ -17,5 +17,14 @@
             <button type = "submit" formmethod="POST" formaction="/connections/<%=connection._id%>?_method=DELETE">Delete</button>
         </form>
         <%}%>
+        <%if(user != connection.author._id) {%>
+            <h3>RSVP to Attend!</h3>
+            <form>
+                <button type = "submit" formmethod="POST" formaction="/<%=connection._id%>/rsvp">Yes</button>
+                <button type = "submit" formmethod="POST" formaction="/<%=connection._id%>/rsvp">No</button>
+                <button type = "submit" formmethod="POST" formaction="/<%=connection._id%>/rsvp">Maybe</button>
+            </form>
+            <h4>Total RSVPs: </h4>
+            <%}%>
     </div>
 <%- include('../partials/footer.ejs')%>

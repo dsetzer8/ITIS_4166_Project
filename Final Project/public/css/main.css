@@ -206,7 +206,7 @@ padding:7.5px;
 */
 
 .content{
-  color: #000080;
+  color: #0B0B45;
   text-decoration: none;
   font-size: 20px;
   padding-left: 20px;
@@ -216,7 +216,7 @@ padding:7.5px;
   list-style-type: none;
 }
 .content table{
-  color: #000080;
+  color: #0B0B45;
   font-size: 20px;
   padding: 5px;
   padding-left: 20px;
@@ -230,18 +230,24 @@ padding:7.5px;
   padding-bottom: 20px;;
 }
 
+.home-image{
+  float: right;
+  padding-right: 250px;
+}
 .success {
   background: #87CEEB;
-  color: #fff;
-  width: 70%;
+  color: #0B0B45;
+  width: 100%;
   text-align: center;
   padding: 10px 10px;
+  font-size: 20px;
 }
 
 .error {
   background: #FFDB58;
-  color: #fff;
-  width: 70%;
+  color: #0B0B45;
+  width: 100%;
   text-align: center;
   padding: 10px 10px;
+  font-size: 20px;
 }

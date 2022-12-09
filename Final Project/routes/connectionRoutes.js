@@ -1,7 +1,7 @@
 const express = require('express');
 const controller = require('../controllers/connectionController');
 const {isLoggedIn, isAuthor} = require('../middlewares/auth');
-const {validateId} = require('../middlewares/validator');
+const {validateId, validateStory} = require('../middlewares/validator');
 
 const router = express.Router();
 
@@ -12,13 +12,13 @@ router.get('/', controller.index);
 router.get('/newConnections', isLoggedIn, controller.new);
 
 //POST /connections: Create a new connection
-router.post('/', isLoggedIn, controller.create);
+router.post('/', isLoggedIn, validateStory, controller.create);
 
 //GET /connections/:id: Send details of connection identified by id
 router.get('/:id', validateId, controller.show);
 
 //GET /connections/:id/edit: Send html form for editing an existing story
-router.get('/:id/edit', validateId, isLoggedIn, isAuthor, controller.edit);
+router.get('/:id/edit', validateId, isLoggedIn, isAuthor, validateStory, controller.edit);
 
 //PUT /connections/:id: Update the connection identified by id
 router.put('/:id', validateId, isLoggedIn, isAuthor, controller.update);
@@ -26,10 +26,7 @@ router.put('/:id', validateId, isLoggedIn, isAuthor, controller.update);
 //DELETE /connections/:id: Delete the story identified by id
 router.delete('/:id', validateId, isLoggedIn, isAuthor, controller.delete);
 
-//GET /about: Display about page
-router.get('/about', controller.about);
-
-//GET /contact: Display contact page
-router.get('/contact', controller.contact);
+//POST RSVP Requests
+router.post('/:id/rsvp', validateId, isLoggedIn, controller.rsvp);
 
 module.exports = router;

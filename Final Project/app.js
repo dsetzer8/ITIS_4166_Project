@@ -4,12 +4,11 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const {MongoClient} = require('mongodb');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const connectionRoutes = require('./routes/connectionRoutes');
 const userRoutes = require('./routes/userRoutes');
-
+mongoose.set('strictQuery', true);
 // Create App
 const app = express();
 
@@ -41,7 +40,7 @@ app.use(session({
             resave: false,
             saveUninitialized: false,
             cookie:{maxAge: 60*60*1000},
-            store: new MongoStore({mongoUrl:'mongodb://localhost:27017/NBAD'})
+            store: new MongoStore({mongoUrl: 'mongodb://localhost:27017/NBAD'})
             })
 );
 
@@ -64,6 +63,21 @@ app.use((req, res, next) => {
     res.locals.errorMessages = req.flash('error');
     res.locals.successMessages = req.flash('success');
     next();
+});
+
+//Home Page
+app.get('/', (req, res)=>{
+    res.render('index');
+});
+
+//Contact Page
+app.get('/contact', (req, res)=>{
+    res.render('contact');
+});
+
+//About Page
+app.get('/about', (req, res)=>{
+    res.render('about');
 });
 
 // Connection Routes

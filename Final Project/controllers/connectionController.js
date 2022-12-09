@@ -1,7 +1,7 @@
 //Required Modules
 const model = require('../models/connection');
 
-//Renders the connections pageS
+//Renders the connections page
 exports.index = (req,res,next)=>{
     model.find()
     .then(connections => res.render('./story/index', {connections}))
@@ -22,18 +22,20 @@ exports.create = (req,res, next)=>{
     })
     .catch(err =>{
         if(err.name === 'ValidationError'){
-            err.status = 400;
+            req.flash('error', err.message);
+            return res.redirect('/back');
         }
         next(err);
     });
 };
 //Show connection details
-exports.show = (req,res, next)=>{
+exports.show = (req, res, next)=>{
+    let id = req.params.id;
     model.findById(id).populate('author', 'firstName lastName')
     .then(connection =>{
         if(connection) {
             return res.render('./story/connectionDetails', {connection});
-        }else{
+        } else {
             let err = new Error('Cannot Find Connection With Id: ' + id);
             err.status = 404;
             next(err);
@@ -66,8 +68,10 @@ exports.update = (req,res, next)=>{
         }
     })
     .catch(err => {
-        if(err.name === 'ValidationError')
-            err.status = 400;
+        if(err.name === 'ValidationError') {
+            req.flash('error', err.message);
+            return res.redirect('/back');
+        }
         next(err)
     });
 };
@@ -81,11 +85,20 @@ exports.delete = (req,res, next)=>{
     })
     .catch(err=>next(err));
 };
-//Redirect to About Page
-exports.about = (req,res)=>{
-    res.redirect('/about');
-};
-//Redirect to Contact Page
-exports.contact = (req,res)=>{
-    res.redirect('/contact');
+
+exports.rsvp = (req, res, next)=>{
+    let rsvp = new model(req.body);
+    rsvp.author = req.session.user;
+    rsvp.save()
+    .then(rsvp=> {
+        req.flash('success', 'RSVP Successful');
+        res.redirect('/connections');
+    })
+    .catch(err =>{
+        if(err.name === 'ValidationError'){
+            req.flash('error', err.message);
+            return res.redirect('/back');
+        }
+        next(err);
+    });
 };

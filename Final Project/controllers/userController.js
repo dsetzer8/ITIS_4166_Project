@@ -1,6 +1,5 @@
 const model = require('../models/user');
-const Story = require('../models/connection');
-const { Connection } = require('mongoose');
+const Connection = require('../models/connection');
 
 exports.new = (req, res)=>{
     return res.render('./user/new');
@@ -49,9 +48,9 @@ exports.login = (req, res, next)=>{
                 if(result) {
                     req.session.user = user._id;
                     req.flash('success', 'You have successfully logged in');
-                    res.redirect('/users/profile');
+                    res.redirect('/');
             } else {
-                req.flash('error', 'wrong password');      
+                req.flash('error', 'Wrong Password');      
                 res.redirect('/users/login');
             }
             });     
