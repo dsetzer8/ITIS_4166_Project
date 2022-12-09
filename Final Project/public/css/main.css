@@ -30,6 +30,9 @@
 .header-right {
   float: right;
 }
+.nav {
+  padding-top: 15px;
+}
 /* General Site Navigation -
   ○ At the top of the page
   ○ Full width
@@ -225,4 +228,20 @@ padding:7.5px;
 
 #connection{
   padding-bottom: 20px;;
+}
+
+.success {
+  background: #87CEEB;
+  color: #fff;
+  width: 70%;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.error {
+  background: #FFDB58;
+  color: #fff;
+  width: 70%;
+  text-align: center;
+  padding: 10px 10px;
 }

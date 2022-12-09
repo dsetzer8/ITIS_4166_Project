@@ -11,11 +11,18 @@
     <!--Logo - Logo is also linked to the Home Page /Index Page-->
         <a href = "/" class = "logo"><img src="/images/lofty.png" alt="Lofty"></a>
     
+    <!--Nav Bar: Users-->
+    <div class = "nav">
+        <a href="/new">Sign Up</a>
+        <a href="/login">Login</a>
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    </div> 
     <!--Representative links:-->
         <div class = "header-right">
     <!--Start a new connection-->
     <!--"Start a new connection" is linked to the newConnection.html-->
-            <a href = "/connections/newConnections">Start a New Connection</a>     
+            <a href = "/connections/newConnections">Start A New Connection</a>     
         </div>    
     </div>
     <!--Connections-->
@@ -23,3 +30,19 @@
         <a href="/connections">Connections</a>
     </div>
     <hr> 
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>
+    
+    <% if(successMessages.length > 0) {%>
+        <% successMessages.forEach(message=>{%>
+            <div class='success'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>
